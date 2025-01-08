@@ -23,5 +23,5 @@ classifier = pipeline(model=model_name, tokenizer=tokenizer)
 
 @app.get("/")
 async def analyze_sentiment(req: Request):
-    result = classifier("I got left out but managed to get back in and died")
+    result = classifier("I got left out but managed to get back in")
     return result[0]

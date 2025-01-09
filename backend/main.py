@@ -1,8 +1,21 @@
 from fastapi import FastAPI, Request
+from fastapi.middleware.cors import CORSMiddleware
 from transformers import AutoModelForSequenceClassification, AutoTokenizer, pipeline
 import os
 
 app = FastAPI()
+
+origins = [
+    "http://localhost:5173"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
 
 model_name = "distilbert-base-uncased-finetuned-sst-2-english"
 model_path = "models/sentiment"
@@ -21,7 +34,11 @@ except Exception as e:
 
 classifier = pipeline(model=model_name, tokenizer=tokenizer)
 
-@app.get("/")
+@app.post("/analysis")
 async def analyze_sentiment(req: Request):
-    result = classifier("I got left out but managed to get back in")
+    data = await req.json()
+    user_input = data["user_input"]
+    print(user_input)
+    result = classifier(user_input)
+    print(result)
     return result[0]

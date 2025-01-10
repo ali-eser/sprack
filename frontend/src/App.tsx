@@ -34,12 +34,12 @@ function App() {
     <>
       <h1>Språk</h1>
       <form onSubmit={handleSubmit}>
-        <textarea className={`input-box ${isLoading ? "gradient-border" : "normal-border"}`} 
-          cols={120} 
-          rows={5} 
-          name="text" 
-          id="text" 
-          value={textInput} 
+        <textarea className={`input-box ${isLoading ? "gradient-border" : "normal-border"}`}
+          cols={120}
+          rows={5}
+          name="text"
+          id="text"
+          value={textInput}
           placeholder='Type or paste text here'
           onChange={(e) => setTextInput(e.target.value)}/>
 

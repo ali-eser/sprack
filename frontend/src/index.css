@@ -51,6 +51,7 @@ button {
   font-weight: 500;
   font-family: inherit;
   background-color: #1a1a1a;
+  color: #d1d3ff;
   cursor: pointer;
   transition: border-color 0.25s;
 }
@@ -64,6 +65,7 @@ form {
   display: flex;
   justify-content: center;
   background-color: #131219;
+  color: #d1d3ff;
   align-items: center;
   padding: 14px;
   width: 60%;
